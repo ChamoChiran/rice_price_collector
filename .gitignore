@@ -1,0 +1,45 @@
+# Data folders
+data/
+
+# macOS system files
+.DS_Store
+
+# Python cache and build
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+*.egg
+build/
+dist/
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.pdm.toml
+.pdm-python
+.pdm-build/
+.pixi/
+__pypackages__/
+
+# Jupyter
+.ipynb_checkpoints
+
+# MkDocs build
+docs/site/
+
+# Environments
+.env
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE/project files
+.spyderproject
+.spyproject
+.ropeproject
+.pypirc
