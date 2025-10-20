@@ -16,7 +16,10 @@ dependencies:
   - scikit-learn
   - ruff
   - pytest
+  - aiohttp
+  - python-dateutil
   - pip:
-    - python-dotenv
-    - mkdocs
-    - -e .
+      - playwright
+      - python-dotenv
+      - mkdocs
+      - -e .

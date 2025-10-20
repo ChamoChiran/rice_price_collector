@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run pdf_dowloader.py as module",
+            "type": "shell",
+            "command": "python -m rice_price_collector.downloader.pdf_dowloader",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
