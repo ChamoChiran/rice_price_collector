@@ -1,6 +1,13 @@
-# Base URLs
-BASE = "https://www.cbsl.gov.lk"
-AJAX_URL = f"{BASE}/en/views/ajax"
+# Configuration for rice_price_collector
+from pathlib import Path
 
-# Folder to save PDFs
-OUTPUT_DIR = "../data/raw"
+# Project root directory
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+# Data directories
+RAW_DATA_DIR = BASE_DIR / "data" / "raw"
+PROCESSED_DIR = BASE_DIR / "data" / "processed"
+
+# Ensure directories exist
+for path in [RAW_DATA_DIR, PROCESSED_DIR]:
+	path.mkdir(parents=True, exist_ok=True)

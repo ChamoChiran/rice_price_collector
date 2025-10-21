@@ -1,7 +1,11 @@
 # Ignore VS Code settings
 .vscode/
 # Data folders
-data/
+/data/
+
+# Ignore notebooks outputs
+notebooks/*.csv
+notebooks/*.pdf
 
 # macOS system files
 .DS_Store
