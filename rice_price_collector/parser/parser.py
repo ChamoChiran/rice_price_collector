@@ -1,3 +1,30 @@
+# Utility: process a dict of years and folders
+def process_year_folders_dict(year_folder_dict, output_dir=None):
+    """
+    Process a dictionary mapping years to folder paths, combine results into a DataFrame.
+    Args:
+        year_folder_dict (dict): {"2023": "/path/to/2023", ...}
+        output_dir (Path or str, optional): Where to save combined CSV (if provided)
+    Returns:
+        pd.DataFrame: Combined DataFrame for all years
+    """
+    from pathlib import Path
+    from .batch_extract import process_year_folder
+    combined = []
+    for year, folder in year_folder_dict.items():
+        folder_path = Path(folder)
+        if not folder_path.exists():
+            print(f"Folder not found: {folder_path}")
+            continue
+        df_year = process_year_folder(folder_path, Path("."))
+        if df_year is not None:
+            combined.append(df_year)
+    if combined:
+        full_df = pd.concat(combined, ignore_index=True)
+        return full_df
+    else:
+        print("No data extracted from provided folders.")
+        return None
 import re
 import pandas as pd
 from .utils import fix_missing_columns

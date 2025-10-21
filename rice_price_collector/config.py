@@ -2,7 +2,7 @@
 from pathlib import Path
 
 # Project root directory
-BASE_DIR = Path(__file__).resolve().parents[1]
+BASE_DIR = Path.cwd()
 
 # Data directories
 RAW_DATA_DIR = BASE_DIR / "data" / "raw"
