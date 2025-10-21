@@ -1,5 +1,6 @@
 site_name: Rice Price Collector
-site_author: chamodh
+site_author: Chamodh
+repo_url: https://github.com/ChamoChiran/rice_price_collector
 theme:
   name: material
   palette:
@@ -15,7 +16,32 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.expand
+    - content.code.copy
+  
+docs_dir: docs
+
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
-  - PDF Downloader: pdf_downloader.md
+
+  - Downloader:
+      - Overview: downloader/index.md
+      - Configuration: downloader/config.md
+      - PDF Downloader: downloader/downloader.md
+
+  - Parser:
+      - Overview: parser/index.md
+      - Batch Extractor: parser/batch_extract.md
+      - Rice Extractor: parser/extractors/rice.md
+      - Columns: parser/columns.md
+      - Utilities: parser/utils.md
+      - Configuration: parser/config.md
+
+  - API Reference:
+      - Downloader Module: api/downloader.md
+      - Parser Module: api/parser.md
+
+  - About: about.md
