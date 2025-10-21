@@ -1,4 +1,21 @@
-site_name: cbsl_rice_price_collector
-# 
+site_name: Rice Price Collector
 site_author: chamodh
-# 
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - PDF Downloader: pdf_downloader.md

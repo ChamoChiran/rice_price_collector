@@ -1,10 +1,13 @@
-# cbsl_rice_price_collector documentation!
+# Welcome to CBSL Rice Price Collector
 
-## Description
+This documentation site provides information about the rice price collection project, including modules, usage, and setup instructions.
 
-this will collect rice prices from CBSL web
+## Modules
+- [PDF Downloader](pdf_downloader.md): Downloads daily rice price reports from CBSL.
 
-## Commands
+## Getting Started
+Refer to the [README](../README.md) for project structure and setup.
 
-The Makefile contains the central entry points for common tasks related to this project.
+---
 
+For more details, explore the documentation pages.

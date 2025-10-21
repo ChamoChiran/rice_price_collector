@@ -18,6 +18,8 @@ dependencies:
   - pytest
   - aiohttp
   - python-dateutil
+  - tabula-py
+  - pdfplumber
   - pip:
       - playwright
       - python-dotenv
