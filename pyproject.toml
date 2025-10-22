@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rice_price_collector"
-version = "0.1.4"  # will be updated automatically by bump-my-version
+version = "0.1.5"  # will be updated automatically by bump-my-version
 description = "Collects daily rice prices from CBSL (Central Bank of Sri Lanka) reports."
 authors = [
   { name = "Chamodh Chiran", email = "your.email@example.com" }
