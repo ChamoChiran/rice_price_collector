@@ -40,10 +40,9 @@ jobs:
           echo "Bumped version from $CURRENT → $NEW"
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git commit -am "chore: bump version to $NEW" || echo "No version change to commit"
-          git push
-
-
+          git add .
+          git commit -m "chore: bump version to $NEW" || echo "No version change to commit"
+          git push || echo "Nothing to push"
 
       # ───────────────────────────────────────────────
       # Build package
@@ -57,7 +56,6 @@ jobs:
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
 
       # ───────────────────────────────────────────────
@@ -66,8 +64,9 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           python -m twine upload \
-            --repository-url https://upload.pkg.github.com/${{ github.repository_owner }}/rice_price_collector \
+            --repository-url https://upload.pypi.org/legacy/ \
+            --skip-existing \
             dist/*
         env:
-          TWINE_USERNAME: ${{ github.actor }}
+          TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
