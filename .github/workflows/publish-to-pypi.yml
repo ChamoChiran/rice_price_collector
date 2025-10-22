@@ -35,13 +35,14 @@ jobs:
       - name: Auto bump version
         run: |
           CURRENT=$(bump-my-version show current_version)
-          echo "Current version: $CURRENT"
-          NEW=$(bump-my-version bump patch)
-          echo "Bumped version to: $NEW"
+          bump-my-version bump patch
+          NEW=$(bump-my-version show current_version)
+          echo "Bumped version from $CURRENT → $NEW"
           git config user.name github-actions
           git config user.email github-actions@github.com
           git commit -am "chore: bump version to $NEW" || echo "No version change to commit"
           git push
+
 
       # ───────────────────────────────────────────────
       # Build package
@@ -64,7 +65,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           python -m twine upload \
-            --repository-url https://upload.github.com/${{ github.repository_owner }}/ \
+            --repository-url https://upload.pkg.github.com/${{ github.repository_owner }}/rice_price_collector \
             dist/*
         env:
           TWINE_USERNAME: ${{ github.actor }}
