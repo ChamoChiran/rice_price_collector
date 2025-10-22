@@ -153,6 +153,6 @@ You now have the tools to:
 
 Next, explore:
 
-[Downloader Module »](pdf_downloader.md)
+[Downloader Module »](downloader/index.md)
 
-[Parser Module »](parser.md)
+[Parser Module »](parser/index.md)

@@ -1,12 +1,11 @@
-# Lazy import for download_all_pdfs to avoid circular import issues
-import importlib
+"""
+rice_price_collector.downloader
 
+Downloader subpackage for fetching CBSL rice price PDFs.
+Exposes main user-facing functions for easy import.
+"""
 
-def __getattr__(name):
-	if name == "download_all_pdfs":
-		return importlib.import_module(".pdf_downloader", __name__).main
-	if name == "download_pdfs_to":
-		return importlib.import_module(".pdf_downloader", __name__).download_pdfs_to
-	raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+# Expose only the main user-facing API
+from .pdf_downloader import main as download_all_pdfs, download_pdfs_to
 
 __all__ = ["download_all_pdfs", "download_pdfs_to"]

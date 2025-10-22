@@ -1,14 +1,23 @@
+"""
+rice_price_collector
+
+Top-level API for rice_price_collector package.
+Exposes main user-facing functions for easy import.
+"""
+
 __version__ = "0.1.0"
 __author__ = "chamodh"
 
-# Lazy import submodules to avoid circular import issues
-import importlib
+# Expose main API directly
+from .downloader import download_all_pdfs, download_pdfs_to
+from .parser import process_year_folders_dict, parse_price_section, create_smart_column_names, extract_section_between, fix_missing_columns
 
-def __getattr__(name):
-	if name == "downloader":
-		return importlib.import_module(".downloader", __name__)
-	if name == "parser":
-		return importlib.import_module(".parser", __name__)
-	raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-
-__all__ = ["downloader", "parser"]
+__all__ = [
+	"download_all_pdfs",
+	"download_pdfs_to",
+	"process_year_folders_dict",
+	"parse_price_section",
+	"create_smart_column_names",
+	"extract_section_between",
+	"fix_missing_columns",
+]
