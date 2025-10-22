@@ -1,26 +1,27 @@
 site_name: Rice Price Collector
-site_author: Chamodh
 repo_url: https://github.com/ChamoChiran/rice_price_collector
+repo_name: GitHub
+
+# Theme customization
 theme:
   name: material
   palette:
     - scheme: default
-      primary: blue
-      accent: amber
+      primary: green
+      accent: green
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: blue
-      accent: amber
+      primary: green
+      accent: green
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-  features:
-    - navigation.instant
-    - navigation.expand
-    - content.code.copy
-  
+
+extra:
+  generator: false  # Remove 'Made with Material for MkDocs' footer
+
 docs_dir: docs
 
 nav:

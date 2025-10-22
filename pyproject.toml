@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rice_price_collector"
-version = "0.0.10"
+version = "0.1.0"
 description = "this will collect rice prices from CBSL web"
 
 authors = [
