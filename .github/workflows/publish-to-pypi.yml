@@ -2,9 +2,9 @@ name: Publish Python distribution
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
-  workflow_dispatch:
+    branches:
+      - release   # 🔥 triggers when you push or merge into the release branch
+  workflow_dispatch:  # manual trigger still works
 
 jobs:
   build-and-publish:
@@ -30,18 +30,18 @@ jobs:
           pip install build bump-my-version twine
 
       # ───────────────────────────────────────────────
-      # Sync pyproject.toml version with Git tag
+      # Auto-set version from latest Git tag (optional safety)
       # ───────────────────────────────────────────────
-      - name: Sync version from tag
+      - name: Sync version from latest tag
         run: |
-          VERSION=${GITHUB_REF_NAME#v}   # strip leading 'v'
-          echo "Setting version to $VERSION"
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+          VERSION=${VERSION#v}
+          echo "Using version: $VERSION"
           bump-my-version set "$VERSION"
           git config user.name github-actions
           git config user.email github-actions@github.com
           git commit -am "chore: set version $VERSION" || echo "No changes to commit"
           git push
-
 
       # ───────────────────────────────────────────────
       # Build package
