@@ -1,9 +1,9 @@
 # CBSL Rice Price Collector
 
-![PyPI](https://img.shields.io/pypi/v/rice-price-collector?color=blue)
+![PyPI](https://img.shields.io/pypi/v/rice_price_collector?color=blue)
 ![Build](https://github.com/ChamoChiran/rice_price_collector/actions/workflows/publish-to-pypi.yml/badge.svg)
 
-cbsl_rice_price_collector collects rice prices from the CBSL website and provides tools for downloading, parsing, and processing rice price data.
+rice_price_collector collects rice prices from the CBSL website and provides tools for downloading, parsing, and processing rice price data.
 
 ---
 
