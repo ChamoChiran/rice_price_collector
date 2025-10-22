@@ -31,7 +31,7 @@ Issues = "https://github.com/ChamoChiran/rice_price_collector/issues"
 
 # setuptools: package discovery
 [tool.setuptools.packages.find]
-where = ["rice_price_collector"]
+where = ["."]
 
 # ───────────────────────────────────────────────
 # Formatting & Linting
