@@ -1,9 +1,7 @@
-name: Publish Python distribution to PyPI
+name: Publish Python distribution
 
 on:
   push:
-    branches:
-      - release
     tags:
       - 'v*.*.*'
   workflow_dispatch:
@@ -11,29 +9,62 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      packages: write   # needed for GitHub Packages
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install build tools
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install build twine
-      - name: Build package
+          pip install build bump-my-version twine
+
+      # ───────────────────────────────────────────────
+      # Sync pyproject.toml version with Git tag
+      # ───────────────────────────────────────────────
+      - name: Sync version from tag
         run: |
-          python -m build
+          VERSION=${GITHUB_REF_NAME#v}   # strip leading 'v'
+          echo "Setting version to $VERSION"
+          bump-my-version write --new-version $VERSION
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "chore: set version $VERSION" || echo "No changes to commit"
+          git push
+
+      # ───────────────────────────────────────────────
+      # Build package
+      # ───────────────────────────────────────────────
+      - name: Build package
+        run: python -m build
+
+      # ───────────────────────────────────────────────
+      # Publish to PyPI
+      # ───────────────────────────────────────────────
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
+          user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+
+      # ───────────────────────────────────────────────
+      # Publish to GitHub Packages
+      # ───────────────────────────────────────────────
       - name: Publish to GitHub Packages
         run: |
-          python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+          python -m twine upload \
+            --repository-url https://upload.github.com/owner/${{ github.repository_owner }}/ \
+            dist/*
         env:
           TWINE_USERNAME: ${{ github.actor }}
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
