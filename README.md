@@ -1,3 +1,8 @@
+
+<p align="center">
+	<img src="https://github.com/ChamoChiran/rice_price_collector/raw/main/images/collector.png" alt="CBSL Rice Price Collector Banner" style="max-width: 100%; height: auto;"/>
+</p>
+
 # CBSL Rice Price Collector
 
 ![PyPI](https://img.shields.io/pypi/v/rice_price_collector?color=blue)
