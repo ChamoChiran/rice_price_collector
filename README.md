@@ -4,11 +4,12 @@
 <p align="center">
 	<img src="https://github.com/ChamoChiran/rice_price_collector/raw/main/images/collector.png" alt="CBSL Rice Price Collector Banner" style="max-width: 100%; height: auto;"/>
 	<br>
-	<a href="https://pypi.org/project/rice_price_collector/">
-		<img src="https://img.shields.io/pypi/v/rice_price_collector?color=blue" alt="PyPI"/>
-	</a>
-	<img src="https://github.com/ChamoChiran/rice_price_collector/actions/workflows/publish-to-pypi.yml/badge.svg" alt="Build"/>
 </p>
+<a href="https://pypi.org/project/rice_price_collector/">
+    <img src="https://img.shields.io/pypi/v/rice_price_collector?color=blue" alt="PyPI"/>
+</a>
+<img src="https://github.com/ChamoChiran/rice_price_collector/actions/workflows/publish-to-pypi.yml/badge.svg" alt="Build"/>
+
 
 
 # CBSL Rice Price Collector
